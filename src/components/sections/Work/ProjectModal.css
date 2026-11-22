@@ -1,0 +1,160 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #111914b8;
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  width: min(850px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 35px 100px #0005;
+  /* Open/close motion is driven by ProjectModal.jsx (grows from the card). */
+}
+
+.modal-backdrop.is-closing { pointer-events: none; }
+
+@media (prefers-reduced-transparency: reduce) {
+  .modal-backdrop {
+    background: #111914e6;
+    backdrop-filter: none;
+  }
+}
+
+.modal-top {
+  padding: 26px 30px;
+  background: #e7eaff;
+  position: relative;
+}
+
+.modal-top .mono { color: var(--blue); }
+
+.modal-top h2 {
+  font: 700 clamp(30px, 5vw, 48px) var(--display);
+  letter-spacing: -.07em;
+  margin: 8px 40px 7px 0;
+}
+
+.modal-top p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #686d7d;
+  max-width: 650px;
+  margin: 0;
+}
+
+.modal-close {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  font-size: 20px;
+  transition: rotate .4s var(--spring-smooth), background .2s, scale .12s ease-out;
+}
+
+.modal-close:hover {
+  rotate: 90deg;
+  background: var(--lime);
+}
+
+.modal-close:active { scale: .9; }
+
+.modal-content { padding: 25px 30px 32px; }
+
+.modal-content h3 {
+  font: 600 20px var(--display);
+  letter-spacing: -.04em;
+  margin: 22px 0 8px;
+}
+
+.modal-content p,
+.modal-content li {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #71766b;
+}
+
+.modal-content ul { padding-left: 20px; }
+
+/* Step-by-step flow chips */
+.modal-flow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 17px 0;
+}
+
+.modal-flow span {
+  padding: 9px 11px;
+  border-radius: 7px;
+  background: #e9edff;
+  color: #344cae;
+  font: 9px var(--mono);
+}
+
+/* The flow assembles step by step once the dialog has landed. */
+.modal-backdrop.open:not(.is-closing) .modal-flow span,
+.modal-backdrop.open:not(.is-closing) .modal-flow i {
+  animation: flowStep .5s var(--spring-smooth) backwards;
+  animation-delay: calc(250ms + var(--i, 0) * 60ms);
+}
+
+.modal-backdrop.open:not(.is-closing) .modal-flow i { animation-name: flowArrow; }
+
+@keyframes flowStep {
+  from { opacity: 0; translate: -10px 0; }
+}
+
+@keyframes flowArrow {
+  from { opacity: 0; }
+}
+
+.modal-flow i {
+  font-style: normal;
+  color: #a4a99d;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.modal-meta span {
+  border: 1px solid #e2e4da;
+  padding: 6px 9px;
+  border-radius: 99px;
+  font: 9px var(--mono);
+  color: #777c70;
+}
+
+.modal-disclaimer {
+  padding: 12px 14px;
+  background: #f5f1e7;
+  border-left: 3px solid var(--orange);
+  font-size: 11px;
+  line-height: 1.6;
+  color: #73776e;
+  margin-top: 18px;
+}
+
+@media (max-width: 600px) {
+  .modal-top,
+  .modal-content { padding: 22px; }
+}

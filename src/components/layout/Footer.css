@@ -1,0 +1,16 @@
+.footer {
+  padding: 24px 0 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #888c81;
+  font: 9px var(--mono);
+  letter-spacing: .08em;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    display: block;
+    line-height: 2;
+  }
+}

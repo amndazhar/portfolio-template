@@ -1,0 +1,132 @@
+.about-section {
+  background: var(--lime);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.about-kicker { color: #56643e; }
+
+.about-title {
+  font: 700 clamp(46px, 7vw, 82px)/.9 var(--display);
+  letter-spacing: -.09em;
+  margin: 15px 0 20px;
+}
+
+.about-title em {
+  font: 600 1em Fraunces, serif;
+  color: var(--blue);
+}
+
+.about-copy {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 520px;
+  color: #4f5940;
+}
+
+.about-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.about-chips span {
+  border: 1px solid #7f963f;
+  border-radius: 99px;
+  padding: 8px 11px;
+  font: 10px var(--mono);
+  color: #465239;
+}
+
+/* "Note from my desk" card — pinned at a slight angle, straightens and lifts
+   when you reach for it. */
+.about-note {
+  background: var(--white);
+  border: 1px solid #e3e6d5;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  position: relative;
+  transform: rotate(2deg);
+  transition: transform .55s var(--spring-smooth), box-shadow .4s;
+}
+
+.about-note:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 30px 60px #17191618;
+}
+
+.about-note:before {
+  content: '✳';
+  position: absolute;
+  right: 22px;
+  top: 17px;
+  color: var(--orange);
+  font-size: 25px;
+  transition: rotate .8s var(--spring-smooth);
+}
+
+.about-note:hover:before { rotate: 180deg; }
+
+.about-note h3 {
+  font: 700 25px var(--display);
+  letter-spacing: -.06em;
+  margin: 5px 0 12px;
+}
+
+.about-note p {
+  font-size: 12px;
+  line-height: 1.75;
+  color: #73796d;
+}
+
+.about-note .mono { color: var(--blue); }
+
+.availability {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 20px;
+  font: 10px var(--mono);
+  color: #5b654c;
+}
+
+.availability i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4f9b54;
+  box-shadow: 0 0 0 4px #4f9b5420;
+  /* A slow "live" ping: open to work, right now. */
+  animation: ping 2.4s ease-out infinite;
+}
+
+.about-chips span {
+  transition: background .2s, color .2s, translate .3s var(--spring-bouncy);
+}
+
+.about-chips span:hover {
+  background: var(--ink);
+  color: var(--lime);
+  translate: 0 -3px;
+}
+
+@media (max-width: 850px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* No slide-in offset on small screens. */
+  .about-note { transform: none; }
+}

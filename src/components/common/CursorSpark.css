@@ -1,0 +1,22 @@
+.cursor-spark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 120;
+  pointer-events: none;
+  color: var(--orange);
+  font-size: 17px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.5) rotate(0);
+  transition: opacity .18s, transform .18s;
+  mix-blend-mode: multiply;
+}
+
+.cursor-spark.on {
+  opacity: .9;
+  transform: translate(-50%, -50%) scale(1) rotate(35deg);
+}
+
+@media (hover: none) {
+  .cursor-spark { display: none; }
+}

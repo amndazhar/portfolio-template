@@ -1,0 +1,49 @@
+/* Reset + base elements */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 82px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+button, a, input { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+}
+
+/* Utilities */
+.mono {
+  font: 10px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.muted { color: var(--muted); }
+
+.wrap {
+  width: min(1240px, calc(100% - 48px));
+  margin: auto;
+}
+
+/* Anything the user can pick up (see hooks/useDraggable.js). */
+.draggable { touch-action: none; cursor: grab; }
+.draggable.dragging { cursor: grabbing; z-index: 10; }
+
+@media (max-width: 600px) {
+  .wrap { width: calc(100% - 34px); }
+}

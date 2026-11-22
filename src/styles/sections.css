@@ -1,0 +1,41 @@
+/* Shared section scaffolding: vertical rhythm + section headings. */
+.section {
+  padding: 88px 0;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.section-kicker {
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font: 700 clamp(38px, 6vw, 68px)/.94 var(--display);
+  letter-spacing: -.075em;
+  margin: 0;
+}
+
+.section-title em {
+  font: 600 1em Fraunces, serif;
+  color: var(--blue);
+}
+
+.section-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #777b70;
+  max-width: 360px;
+  margin: 0 0 4px;
+}
+
+@media (max-width: 600px) {
+  .section-head { display: block; }
+  .section-desc { margin-top: 16px; }
+}

@@ -1,0 +1,332 @@
+.work-section {
+  background: #f1f0e9;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Oversized watermark behind the gallery */
+.work-section:before {
+  content: 'SELECTED WORK';
+  position: absolute;
+  top: 48px;
+  right: -20px;
+  font: 700 clamp(65px, 13vw, 180px)/1 var(--display);
+  letter-spacing: -.1em;
+  color: #fff7;
+  opacity: .45;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Filters */
+.filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* The one ink pill that glides between chips (FilterBar.jsx). */
+.filter-pill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 99px;
+  background: var(--ink);
+  transition:
+    transform .55s var(--spring-smooth),
+    width .55s var(--spring-smooth),
+    height .55s var(--spring-smooth);
+  pointer-events: none;
+}
+
+.filter-pill.is-instant { transition: none; }
+
+.filter {
+  position: relative;
+  border: 1px solid #c9cdc1;
+  background: transparent;
+  border-radius: 99px;
+  padding: 8px 13px;
+  font: 10px var(--mono);
+  color: #64695f;
+  transition: color .25s, border-color .25s, scale .12s ease-out;
+}
+
+.filter:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.filter.active {
+  color: white;
+  border-color: transparent;
+}
+
+.filter:active { scale: .95; }
+
+/* Grid + cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px 26px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards are frameless: the illustration is the card. The card itself stays
+   put — motion lives in the visual and its labels. */
+.project-card {
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  overflow: visible;
+  box-shadow: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.project-card.hidden { display: none; }
+
+/* Staggered editorial rhythm: the right-hand column sits lower. */
+.project-card.is-offset { margin-top: 84px; }
+
+.project-visual {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  transition: scale .2s ease-out, border-radius .3s;
+}
+
+/* Pressed: the tile gives a little under the pointer. */
+.project-card:active .project-visual {
+  scale: .985;
+  border-radius: 10px;
+}
+
+.project-card:focus-visible .project-visual {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+}
+
+/* Tile colour comes from each project's `tile` in src/content/projects.js;
+   this is only the fallback. */
+.project-visual { background: #e4e6dc; }
+
+/* "View project" pill slides up on hover */
+.project-visual:after {
+  content: 'VIEW PROJECT ↗';
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 9px 12px;
+  border-radius: 99px;
+  background: var(--ink);
+  color: white;
+  font: 9px var(--mono);
+  letter-spacing: .08em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .25s, transform .25s;
+  z-index: 4;
+}
+
+.project-card:hover .project-visual:after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Illustration or screenshot fills the tile and zooms gently on hover. */
+.project-visual svg,
+.project-visual .project-image {
+  width: 100%;
+  height: 100%;
+  transition: transform .7s var(--ease-out);
+  transform-origin: center;
+}
+
+.project-visual .project-image {
+  display: block;
+  object-fit: cover;
+  user-select: none;
+}
+
+.project-card:hover .project-visual svg,
+.project-card:hover .project-visual .project-image { transform: scale(1.055) rotate(-1deg); }
+
+.project-number {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  font: 10px var(--mono);
+  color: #454a40;
+  background: #fffefa;
+  padding: 7px 9px;
+  border-radius: 99px;
+  z-index: 2;
+}
+
+.project-card:hover .project-number { animation: tinyWiggle .35s ease; }
+
+.project-sticker {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  border-radius: 99px;
+  padding: 7px 10px;
+  background: var(--lime);
+  font: 9px var(--mono);
+  z-index: 2;
+  transition: transform .4s;
+}
+
+.project-card:hover .project-sticker { transform: rotate(-8deg) scale(1.08); }
+
+/* Card text */
+.project-info { padding: 15px 0 5px; }
+
+.project-info-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-type {
+  font: 9px var(--mono);
+  letter-spacing: .1em;
+  color: #7a8075;
+  text-transform: uppercase;
+}
+
+.project-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid #cfd2c8;
+  font-size: 18px;
+  transition: .2s;
+}
+
+.project-card:hover .project-arrow {
+  background: var(--blue);
+  color: white;
+  transform: translate(3px, -3px) rotate(45deg);
+}
+
+.project-info h3 {
+  font: 700 clamp(25px, 3vw, 34px) var(--display);
+  letter-spacing: -.06em;
+  margin: 9px 0 7px;
+  display: inline-block;
+  position: relative;
+}
+
+.project-info h3:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 1px;
+  height: 2px;
+  background: var(--blue);
+  transition: right .3s;
+}
+
+.project-card:hover .project-info h3:after { right: 0; }
+
+.project-info p {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #777b70;
+  margin: 0;
+  max-width: 500px;
+}
+
+.tech {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.tech span {
+  border: 1px solid #e0e2d9;
+  border-radius: 99px;
+  padding: 5px 8px;
+  font: 9px var(--mono);
+  color: #777c71;
+}
+
+.project-footnote {
+  margin-top: 22px;
+  padding-top: 10px;
+  color: #85897f;
+  font: 10px var(--mono);
+  letter-spacing: .05em;
+}
+
+@media (max-width: 850px) {
+  .project-visual { height: 250px; }
+}
+
+/* Watermark drifts sideways as the section scrolls past. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .work-section { view-timeline: --work block; }
+
+    .work-section:before {
+      animation: watermarkSlide linear both;
+      animation-timeline: --work;
+    }
+  }
+}
+
+@keyframes watermarkSlide {
+  from { translate: 8% 0; }
+  to   { translate: -18% 0; }
+}
+
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+
+  .project-card.is-offset { margin-top: 0; }
+
+  .project-visual { height: 235px; }
+
+  .project-visual:after {
+    opacity: 1;
+    transform: none;
+    font-size: 8px;
+    padding: 7px 9px;
+  }
+}
+
+/* Touch devices: always show the "view project" pill. */
+@media (hover: none) {
+  .project-visual:after {
+    opacity: 1;
+    transform: none;
+  }
+}

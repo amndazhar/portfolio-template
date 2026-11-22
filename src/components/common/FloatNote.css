@@ -1,0 +1,36 @@
+.float-note {
+  position: absolute;
+  z-index: 3;
+  padding: 10px 13px;
+  border: 1px solid #1a1d1622;
+  border-radius: 10px;
+  background: var(--white);
+  font: 10px var(--mono);
+  /* Size must not depend on position: an absolutely positioned box near the
+     right edge would otherwise shrink, wrap and grow taller mid-drag. */
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  animation: float 5s ease-in-out infinite;
+  transition: box-shadow .25s, scale .25s;
+  cursor: grab;
+}
+
+.float-note:hover {
+  scale: 1.08;
+  box-shadow: 0 14px 30px #20251e22;
+}
+
+/* Picked up: lifts toward the viewer and stops bobbing so it tracks the
+   pointer exactly. */
+.float-note.dragging {
+  scale: 1.06;
+  box-shadow: 0 22px 40px #20251e30;
+  animation-play-state: paused;
+}
+
+@media (max-width: 600px) {
+  .float-note {
+    font-size: 8px;
+    padding: 8px;
+  }
+}

@@ -1,0 +1,130 @@
+.contact-section {
+  background: var(--lav);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-kicker { color: #5a54a1; }
+
+.contact-title {
+  font: 700 clamp(55px, 9vw, 105px)/.85 var(--display);
+  letter-spacing: -.1em;
+  margin: 15px 0 20px;
+}
+
+.contact-title em {
+  font: 600 1em Fraunces, serif;
+  color: var(--blue);
+}
+
+.contact-copy {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #656179;
+  max-width: 400px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  font: 10px var(--mono);
+  color: #656179;
+}
+
+/* Form card — set at a slight counter-angle to the About note; straightens
+   when you reach for it or start typing. */
+.contact-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  transform: rotate(-2deg);
+  transition: transform .55s var(--spring-smooth), box-shadow .4s;
+}
+
+.contact-card:hover,
+.contact-card:focus-within {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: 0 30px 60px #17191618;
+}
+
+.contact-card label {
+  display: block;
+  font: 9px var(--mono);
+  letter-spacing: .1em;
+  color: #8b8c9a;
+  margin-bottom: 7px;
+}
+
+.contact-card input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #d8d7df;
+  padding: 10px 0;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  margin-bottom: 17px;
+  color: var(--ink);
+}
+
+.contact-card input {
+  transition: border-color .25s;
+}
+
+.contact-card input:focus { border-color: var(--blue); }
+
+/* Field labels light up with their input. */
+.contact-card label { transition: color .25s; }
+.contact-card label:has(+ input:focus) { color: var(--blue); }
+
+.contact-links a {
+  position: relative;
+  transition: color .2s;
+}
+
+.contact-links a:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transition: right .3s var(--spring-smooth);
+}
+
+.contact-links a:hover { color: var(--blue); }
+.contact-links a:hover:after { right: 0; }
+
+.contact-card button {
+  width: 100%;
+  justify-content: center;
+}
+
+.contact-note {
+  font: 9px var(--mono);
+  color: #8a8996;
+  line-height: 1.6;
+  margin: 13px 0 0;
+}
+
+@media (max-width: 850px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* No slide-in offset on small screens. */
+  .contact-card { transform: none; }
+}

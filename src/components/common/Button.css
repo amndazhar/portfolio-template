@@ -1,0 +1,49 @@
+.btn {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 99px;
+  padding: 13px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: .22s, scale .12s ease-out;
+}
+
+/* Press feedback lands on pointer-down. */
+.btn:active { scale: .96; }
+
+/* Light sheen that sweeps across on hover. */
+.btn:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, #ffffff35 50%, transparent 75%);
+  transform: translateX(-120%);
+  transition: transform .55s;
+}
+
+.btn:hover:after { transform: translateX(120%); }
+
+.btn-dark {
+  background: var(--ink);
+  color: white;
+}
+
+.btn-dark:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+}
+
+.btn-line {
+  background: transparent;
+  border: 1px solid #bfc3b8;
+  color: var(--ink);
+}
+
+.btn-line:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}

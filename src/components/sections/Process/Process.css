@@ -1,0 +1,147 @@
+.process { background: var(--paper); }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 65px;
+}
+
+/* Heading column stays pinned while the steps scroll past. */
+.process-sticky {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.process-sticky .section-desc { margin-top: 20px; }
+
+/* "02 / 04" — the pinned column tells you where you are in the list. */
+.process-counter {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.process-counter-num {
+  display: inline-block;
+  min-width: 2ch;
+  color: var(--blue);
+  font: 700 28px var(--display);
+  letter-spacing: -.04em;
+  vertical-align: -4px;
+}
+
+/* Progress rail: a hairline track, filled in blue up to the reading line. */
+.process-list {
+  position: relative;
+  border-top: 1px solid var(--line);
+  --progress: 0;
+}
+
+.process-list:before,
+.process-list:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -30px;
+  width: 2px;
+  border-radius: 2px;
+}
+
+.process-list:before { background: var(--line); }
+
+.process-list:after {
+  background: var(--blue);
+  transform: scaleY(var(--progress));
+  transform-origin: top;
+}
+
+.process-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding .35s var(--spring-smooth);
+}
+
+/* Marker on the rail for each step; pops when its step is being read. */
+.process-item:before {
+  content: '';
+  position: absolute;
+  left: -35px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--line);
+  z-index: 1;
+  transition: box-shadow .3s, background .3s, scale .45s var(--spring-bouncy);
+}
+
+.process-item.is-past:before { box-shadow: inset 0 0 0 2px var(--blue); }
+
+.process-item.is-active:before {
+  background: var(--orange);
+  box-shadow: 0 0 0 5px #ff795833;
+  scale: 1.25;
+}
+
+.process-item:hover { padding-left: 10px; }
+
+.process-num {
+  font: 12px var(--mono);
+  color: var(--blue);
+  transition: color .25s;
+}
+
+.process-item:hover .process-num,
+.process-item.is-active .process-num { color: var(--orange); }
+
+.process-item h3 {
+  font: 600 22px var(--display);
+  letter-spacing: -.05em;
+  margin: 0 0 7px;
+  transition: color .25s;
+}
+
+.process-item:hover h3 { color: var(--blue); }
+
+.process-item p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #74796f;
+  margin: 0;
+  max-width: 570px;
+}
+
+.process-tag {
+  display: inline-block;
+  margin-top: 12px;
+  background: var(--lav);
+  padding: 5px 8px;
+  border-radius: 4px;
+  font: 9px var(--mono);
+  transition: background .3s;
+}
+
+.process-item.is-active .process-tag { background: var(--lime); }
+
+@media (max-width: 850px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .process-sticky { position: static; }
+  .process-counter { display: none; }
+
+  /* Rail moves inside the column on stacked layouts. */
+  .process-list { padding-left: 26px; }
+  .process-list:before,
+  .process-list:after { left: 5px; }
+  .process-item:before { left: -26px; }
+}

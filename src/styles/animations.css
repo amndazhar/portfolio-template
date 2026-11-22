@@ -1,0 +1,67 @@
+/* ---------------------------------------------------------------------------
+   Keyframes (ambient + one-shot)
+   --------------------------------------------------------------------------- */
+
+/* Hero blob slowly changes shape. */
+@keyframes morph {
+  0%, 100% { border-radius: 48% 52% 42% 58% / 53% 43% 57% 47%; transform: rotate(-12deg); }
+  50%      { border-radius: 58% 42% 55% 45% / 42% 58% 42% 58%; transform: rotate(5deg); }
+}
+
+/* Floating sticky notes bob up and down (uses `translate`, so it composes
+   with each note's own `transform: rotate()`). */
+@keyframes float { 50% { translate: 0 -10px; } }
+
+/* Hero sparkles. */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Project number label wiggles on card hover. */
+@keyframes tinyWiggle {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-5deg); }
+  75%      { transform: rotate(4deg); }
+}
+
+/* New demo output text slides in. */
+@keyframes swapIn {
+  from { opacity: 0; translate: 0 6px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* "Live" status ring (availability dot, missing-box warning). */
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 var(--ping-color, #4f9b5466); }
+  70%  { box-shadow: 0 0 0 9px #0000; }
+  100% { box-shadow: 0 0 0 0 #0000; }
+}
+
+/* An item drops onto a surface with a little squash. */
+@keyframes dropIn {
+  0%   { opacity: 0; translate: 0 -26px; scale: .8 1.15; }
+  60%  { opacity: 1; translate: 0 0; scale: 1.12 .88; }
+  100% { translate: 0 0; scale: 1 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal (motion lives in hooks/useReveal.js — Web Animations API on
+   opacity + `translate`, so components keep full control of `transform` and
+   `transition`). This rule is only the hidden resting state.
+   --------------------------------------------------------------------------- */
+.reveal:not(.in) {
+  opacity: 0;
+  translate: 0 36px;
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion / transparency
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal:not(.in) { translate: none; }
+}

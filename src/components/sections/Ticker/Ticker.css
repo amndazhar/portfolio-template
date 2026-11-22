@@ -1,0 +1,29 @@
+.scroll-strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--lime);
+  padding: 13px 0;
+}
+
+.ticker {
+  display: flex;
+  width: max-content;
+  will-change: transform; /* moved every frame by Ticker.jsx */
+  gap: 28px;
+  font: 700 12px var(--display);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.ticker span {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.ticker i {
+  font-style: normal;
+  color: var(--blue);
+  font-size: 17px;
+}

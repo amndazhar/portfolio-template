@@ -1,0 +1,136 @@
+/* Full-screen intro overlay, fades out after 1.8s or on click. */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--night);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #f7f5ed;
+  transition: opacity .6s .12s, visibility .72s;
+}
+
+/* Exit: the content lifts away first, then the curtain fades — the hero
+   underneath starts building during the fade (see BootScreen.jsx). */
+.boot.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-inner {
+  width: min(560px, 100%);
+  text-align: center;
+  transition: translate .6s var(--spring-smooth), opacity .35s, scale .6s var(--spring-smooth);
+}
+
+.boot.hide .boot-inner {
+  translate: 0 -36px;
+  scale: .97;
+  opacity: 0;
+}
+
+.boot-kicker { color: var(--lime); }
+
+.boot-title {
+  font: 700 clamp(42px, 8vw, 76px)/.94 var(--display);
+  letter-spacing: -.08em;
+  margin: 22px 0;
+}
+
+.boot-title em {
+  font-family: Fraunces, serif;
+  color: var(--lime);
+  font-weight: 600;
+}
+
+.boot-copy {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #b7beb0;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.boot-btn {
+  margin-top: 28px;
+  border: 0;
+  border-radius: 99px;
+  background: var(--lime);
+  color: var(--night);
+  padding: 14px 23px;
+  font-weight: 800;
+  font-size: 12px;
+  box-shadow: 0 5px 0 #9fb84b;
+  transition: .2s;
+}
+
+.boot-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #9fb84b;
+}
+
+/* Pressed: the button sinks onto its solid shadow, like a real key. */
+.boot-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #9fb84b;
+  transition-duration: .08s;
+}
+
+/* CSS-drawn desktop monitor */
+.boot-art {
+  height: 140px;
+  position: relative;
+  margin: 20px auto 0;
+  width: min(360px, 90%);
+}
+
+.boot-monitor {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 190px;
+  height: 112px;
+  border: 8px solid #d4d1c6;
+  border-radius: 12px;
+  background: #526b58;
+  box-shadow: 0 20px 30px #0005;
+}
+
+.boot-monitor:after {
+  content: '✳';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--lime);
+  font-size: 45px;
+}
+
+.boot-stand {
+  position: absolute;
+  left: 50%;
+  top: 112px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: #bdb9ac;
+  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+}
+
+.boot-base {
+  position: absolute;
+  left: 50%;
+  top: 130px;
+  transform: translateX(-50%);
+  width: 125px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4d1c6;
+}
+
+@media (max-width: 600px) {
+  .boot-title { font-size: 54px; }
+}

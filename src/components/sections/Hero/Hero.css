@@ -1,0 +1,197 @@
+.hero {
+  padding: 88px 0 78px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6e7469;
+}
+
+.eyebrow:before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--blue);
+}
+
+/* Headline: solid → outlined → italic serif */
+.hero h1 {
+  font: 700 clamp(58px, 8.5vw, 116px)/.87 var(--display);
+  letter-spacing: -.095em;
+  margin: 25px 0 22px;
+  max-width: 760px;
+}
+
+.hero h1 .line { display: block; }
+
+.hero h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+  transition: color .35s, -webkit-text-stroke .35s;
+  cursor: crosshair;
+}
+
+.hero h1 .outline:hover {
+  color: var(--orange);
+  -webkit-text-stroke: 1px var(--orange);
+}
+
+.hero h1 .blue {
+  color: var(--blue);
+  font-family: Fraunces, serif;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -.08em;
+}
+
+.hero-copy {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6c7167;
+  max-width: 430px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 28px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+  color: #85887e;
+}
+
+.hero-meta span {
+  font: 10px var(--mono);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.hero-meta b {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Art column */
+.hero-art {
+  min-height: 440px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.blob {
+  position: absolute;
+  width: min(420px, 90%);
+  aspect-ratio: 1;
+  border-radius: 48% 52% 42% 58% / 53% 43% 57% 47%;
+  background: var(--blue2);
+  transform: rotate(-12deg);
+  opacity: .72;
+  animation: morph 12s ease-in-out infinite;
+}
+
+.blob:after {
+  content: '';
+  position: absolute;
+  inset: 22px;
+  border: 1px dashed #3457e580;
+  border-radius: inherit;
+}
+
+.hero-illustration {
+  position: relative;
+  width: min(470px, 100%);
+  z-index: 1;
+  filter: drop-shadow(0 24px 20px #20251e18);
+  transition: transform .6s var(--ease-out);
+}
+
+.hero-art:hover .hero-illustration { transform: translateY(-7px) rotate(1.2deg); }
+
+/* Note placement (base note styles: common/FloatNote.css) */
+.float-note.one {
+  top: 10%;
+  left: 0;
+  transform: rotate(-7deg);
+}
+
+.float-note.two {
+  right: 0;
+  top: 25%;
+  background: var(--lime);
+  transform: rotate(5deg);
+  animation-delay: -2s;
+}
+
+.float-note.three {
+  left: 4%;
+  bottom: 10%;
+  background: var(--orange);
+  transform: rotate(4deg);
+  animation-delay: -3s;
+}
+
+.spark {
+  position: absolute;
+  color: var(--orange);
+  font-size: 26px;
+  animation: spin 14s linear infinite;
+  transition: color .3s, scale .3s;
+}
+
+.spark.s1 { top: 9%; right: 13%; }
+.spark.s2 { bottom: 8%; right: 14%; color: var(--blue); }
+
+.hero-art:hover .spark { scale: 1.2; }
+
+/* Held back until the boot screen lifts; Hero.jsx then plays the entrance. */
+.hero:not(.is-entered) [data-intro] { opacity: 0; }
+
+/* Scroll parallax: the art column lags behind the page as you leave the hero,
+   giving the composition depth. Progressive enhancement — browsers without
+   scroll-driven animations simply scroll normally. */
+@supports (animation-timeline: scroll()) {
+  /* Desktop only: on stacked layouts the art sits right above the ticker. */
+  @media (prefers-reduced-motion: no-preference) and (min-width: 851px) {
+    .hero-art {
+      animation: heroArtDrift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+
+    .hero h1 .blue {
+      animation: heroLineDrift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+@keyframes heroArtDrift { to { translate: 0 110px; } }
+@keyframes heroLineDrift { to { translate: -40px 0; } }
+
+@media (max-width: 850px) {
+  .hero { padding-top: 58px; }
+  .hero-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding-top: 44px; }
+  .hero-actions { flex-wrap: wrap; }
+}
