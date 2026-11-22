@@ -2,7 +2,7 @@
 
 This document describes the design system **as it is implemented** in this template: the creative concept, tokens, components, motion system and interaction rules. Use it as the reference when adding or changing anything, so new work feels like it belongs.
 
-All words, projects and illustrations live in `src/content/` (see the README). Everything described here works the same whatever content you put in.
+All words, projects and illustrations live in `src/content/` (see [docs/CUSTOMIZING.md](docs/CUSTOMIZING.md)). Everything described here works the same whatever content you put in.
 
 ---
 
