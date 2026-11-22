@@ -1,5 +1,7 @@
 # ✳ Springy Portfolio
 
+<sub>An open-source portfolio template by [amndazhar](https://github.com/amndazhar) · MIT</sub>
+
 A playful, art-directed developer portfolio template built with **React + Vite**. It feels **physical**: motion runs on real springs, things can be grabbed and thrown, and the page reacts to how you scroll.
 
 **No UI libraries and no animation libraries.** It uses a ~100-line hand-rolled spring engine, plain CSS and a single content folder you edit to make it yours.
@@ -59,6 +61,8 @@ Edit `src/content/site.js`. Two bits of markup work in headings:
 ```js
 title: "A few things\nI've *made.*"   // \n = line break, *words* = accent (italic serif)
 ```
+
+The small "template by" link in the footer is optional: set `credit: false` to hide it.
 
 Set **`contact.email`** to your real address. Until you do, the contact form shows a reminder instead of opening a mail draft. The page `<title>` and meta description are filled from `site.meta` at build time.
 
@@ -124,6 +128,15 @@ src/
 - **Reveals don't fight components.** They animate `opacity` and the individual `translate` property, so a component's own `transform` and hover transitions keep working.
 - **Progressive enhancement.** Scroll-driven parallax uses CSS `animation-timeline` where supported. Elsewhere the page scrolls normally.
 
-## License
+## Credits & license
 
-[MIT](LICENSE). Use it, remix it, ship it. A link back is appreciated but not required.
+Springy Portfolio was designed and built by **[amndazhar](https://github.com/amndazhar)**. Source: [github.com/amndazhar/portfolio-template](https://github.com/amndazhar/portfolio-template).
+
+Released under the **[MIT License](LICENSE)**: use it, remix it and ship it, for personal or commercial sites.
+
+- **Required:** keep the `LICENSE` file (with its copyright notice) in your copy of the code. That's the MIT License's one condition.
+- **Optional:** the small "template by" credit in the footer. Hide it with `credit: false` in `src/content/site.js`. Leaving it on, or linking back from your README, is a kind way to say thanks.
+
+The template also notes its origin in places visitors never see: a `<meta name="generator">` tag, a comment in `index.html`, a banner comment in the built JavaScript, and one dim line in the browser console. You don't need to touch any of them to customise the site.
+
+If you build something with it, I'd love to see it. Open an issue or tag the repo.

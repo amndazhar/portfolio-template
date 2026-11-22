@@ -1,3 +1,4 @@
+/* Springy Portfolio · original template by amndazhar · https://github.com/amndazhar/portfolio-template · MIT */
 import { useCallback, useEffect, useState } from 'react';
 
 import BootScreen from './components/layout/BootScreen.jsx';

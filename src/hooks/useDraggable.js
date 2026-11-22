@@ -1,3 +1,4 @@
+/* Springy Portfolio · original template by amndazhar · https://github.com/amndazhar/portfolio-template · MIT */
 import { useEffect, useRef } from 'react';
 import { animateSpring, clamp, prefersReducedMotion, project, rubberbandClamp } from '../utils/spring.js';
 

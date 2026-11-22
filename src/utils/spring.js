@@ -1,3 +1,4 @@
+/* Springy Portfolio · original template by amndazhar · https://github.com/amndazhar/portfolio-template · MIT */
 /**
  * Tiny spring toolkit (no dependencies).
  *

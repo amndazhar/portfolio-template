@@ -1,8 +1,16 @@
 /* Small, quiet easter eggs. Nothing here affects the main experience.
    Copy lives in src/content/site.js → `personality` (set an entry to null to turn it off). */
 import { site } from '../content/site.js';
+import { CREATOR } from '../creator.js';
 
 const { personality = {} } = site;
+
+/** One dim console line naming the template — follows the same `credit` switch as the footer. */
+export function logTemplateCredit() {
+  if (site.credit === false || typeof window === 'undefined' || window.__portfolioCredited) return;
+  window.__portfolioCredited = true;
+  console.log(`%cBuilt with ${CREATOR.template} by ${CREATOR.name} · ${CREATOR.repo}`, 'font: 11px "DM Mono", monospace; color: #9a9d93;');
+}
 
 /** A hello for anyone who opens DevTools — they're probably the audience. */
 export function greetCuriousDevelopers() {

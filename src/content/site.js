@@ -156,6 +156,10 @@ export const site = {
 
   footer: ['© 2026 JORDAN · MADE WITH CURIOSITY & A LOT OF TABS', 'DESIGNED TO BE EXPLORED ↗'],
 
+  // A small, dimmed "template by" link after the footer text. Optional —
+  // set to false to hide it. (Keeping it is a kind way to say thanks.)
+  credit: true,
+
   // Small easter eggs. Set either to null to switch it off.
   personality: {
     consoleGreeting: {

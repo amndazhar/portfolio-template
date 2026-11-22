@@ -8,9 +8,25 @@
   letter-spacing: .08em;
 }
 
+/* Optional template credit — deliberately quiet: same type as the footer,
+   dimmed until hovered. */
+.footer-credit {
+  opacity: .6;
+  transition: opacity .2s, color .2s;
+}
+
+.footer-credit:hover,
+.footer-credit:focus-visible {
+  opacity: 1;
+  color: var(--blue);
+}
+
 @media (max-width: 600px) {
   .footer {
     display: block;
     line-height: 2;
   }
+
+  /* One footer line per row (inline spans would run together: "TABSDESIGNED"). */
+  .footer > span { display: block; }
 }

@@ -1,3 +1,4 @@
+/* Springy Portfolio · original template by amndazhar · https://github.com/amndazhar/portfolio-template · MIT */
 import { useEffect, useRef, useState } from 'react';
 import { SPRINGS, prefersReducedMotion } from '../utils/spring.js';
 

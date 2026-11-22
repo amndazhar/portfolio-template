@@ -1,6 +1,8 @@
+/* Springy Portfolio · original template by amndazhar · https://github.com/amndazhar/portfolio-template · MIT */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { site } from './src/content/site.js';
+import { CREATOR, creatorLine } from './src/creator.js';
 
 const escapeHtml = (value = '') =>
   String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -15,6 +17,8 @@ function siteMeta() {
     TITLE: site.meta.title,
     DESCRIPTION: site.meta.description,
     THEME_COLOR: site.meta.themeColor,
+    AUTHOR: site.identity.name, // the site owner (you)
+    GENERATOR: creatorLine, // the template it was built with
   };
   return {
     name: 'site-meta',
@@ -27,4 +31,12 @@ function siteMeta() {
 export default defineConfig({
   plugins: [react(), siteMeta()],
   base: './',
+  build: {
+    rollupOptions: {
+      output: {
+        // Kept by the minifier (/*! … */ is a "legal comment").
+        banner: `/*! ${CREATOR.template} · (c) ${CREATOR.year} ${CREATOR.name} · ${CREATOR.license} License · ${CREATOR.repo} */`,
+      },
+    },
+  },
 });

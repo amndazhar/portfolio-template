@@ -1,9 +1,27 @@
 {
   "name": "springy-portfolio",
   "description": "A playful, physics-driven developer portfolio template — React + Vite, springs, throwable notes, scroll-aware motion.",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "license": "MIT",
+  "author": "amndazhar (https://github.com/amndazhar)",
+  "homepage": "https://github.com/amndazhar/portfolio-template#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amndazhar/portfolio-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amndazhar/portfolio-template/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "template",
+    "react",
+    "vite",
+    "animation",
+    "spring",
+    "developer-portfolio"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",

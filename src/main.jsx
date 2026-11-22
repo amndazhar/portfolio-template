@@ -1,3 +1,7 @@
+/*
+ * Springy Portfolio — original template by amndazhar
+ * https://github.com/amndazhar/portfolio-template · MIT License (see LICENSE)
+ */
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -10,10 +14,11 @@ import './styles/sections.css';
 
 import App from './App.jsx';
 import { installSpringVariables } from './utils/spring.js';
-import { greetCuriousDevelopers } from './utils/personality.js';
+import { greetCuriousDevelopers, logTemplateCredit } from './utils/personality.js';
 
 installSpringVariables();
 greetCuriousDevelopers();
+logTemplateCredit();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -202,6 +202,7 @@ Modal · Toast · Cursor spark (fixed layers)
 | **FloatNote** | `common/FloatNote.jsx` | White mono 10px note, 1px border `#1a1d1622`, radius 10, `--shadow`. Bobs 10px (`float` 5s). Hover: scale 1.08 and deeper shadow. Draggable. |
 | **SectionHeading** | `common/SectionHeading.jsx` | Kicker, H2 and description inside a `Reveal`. |
 | **Reveal** | `common/Reveal.jsx` | Wrapper that fades and slides in on first view. |
+| **Footer + credit** | `layout/Footer.jsx` | Lines from `site.footer`, mono 9px `#888c81`, split left/right (stacked on mobile). An optional template credit link follows the last line at 60% opacity and turns blue on hover. Toggle it with `site.credit`; the attribution values live in `src/creator.js`. |
 | **Toast** | `common/Toast.jsx` | Ink pill, mono 10px, fixed bottom-centre. Slides up 20px when shown and stays 2.6s. |
 | **CursorSpark** | `common/CursorSpark.jsx` | Orange ✳ 17px that follows the mouse (multiply blend). Fades out 420ms after the pointer stops. |
 | **Header / logo** | `layout/Header.jsx` | Lime 27px rounded square ✳ rotated −8°, then the logo name plus a light suffix (both from `site.identity.logo`). Nav links 12px `#62665c` with a blue underline that grows on hover. CTA is an ink pill. |
